@@ -105,7 +105,7 @@ END DEF
 
 DEF development_candidates(parcels, min_area, allowed_zones)
     CREATE candidates as an empty list
-    FOR each parcel in parcels
+    FOR parcel in parcels
         IF is_development_candidate(parcel, min_area, allowed_zones)
             ADD parcel to candidates
         END IF

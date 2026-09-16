@@ -36,15 +36,11 @@ class Point(SpatialObject):
 # Preserving the access to Longitude and Latitude using Properties.
     @property
     def lon(self):
-        return float(self.attributes["area_sqm"])
+        return self.geometry.x
 
     @property
     def lat(self):
-        return float(self.attribute["zone"])
-
-    @property
-    def is_active(self):
-        return bool(self.attributes["is_active"])
+        return self.geometry.y
     
 # ------------------------------------------------------------------ 
 # Instance methods (behavior belongs to the object)
@@ -136,6 +132,19 @@ class Parcel(SpatialObject):
             "bbox" : list(self.bbox()),
             "attributes" : self.attributes
         }
+
+    @property
+    def area_sqm(self):
+        return float(self.attributes["area_sqm"])
+
+    @property
+    def zone(self):
+        return self.attributes["zone"]
+
+    @property
+    def is_active(self):
+        return bool(self.attributes["is_active"])
+    
     @classmethod
     def from_dict(cls, record):
         geometry = shape(record["geometry"])
