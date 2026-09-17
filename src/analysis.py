@@ -53,3 +53,52 @@ def intersecting_parcels(parcels, study_area):
         if parcel.intersects(study_area):
             intersect_parcel.append(parcel)
     return intersect_parcel
+
+#Analysis 6. Raster Algorithm
+def classify_suitability_grid(
+        slope_grid,
+        flood_grid,
+        max_slope,
+        max_flood,
+):
+
+    if len(slope_grid) != len(flood_grid):
+        raise ValueError("Slope and flood grid are not equal, must have the same number of rows.")
+
+    for row in range(len(slope_grid)):
+        if len(slope_grid[row]) != len(flood_grid[row]):
+            raise ValueError("Corresponding rows must have the same number of columns!")
+
+    suitability_grid = []
+
+    for row in range(len(slope_grid)):
+        suitability_row = []
+
+        for col in range(len(slope_grid[row])):
+            slope_value = slope_grid[row][col]
+            flood_value = flood_grid[row][col]
+
+            if slope_value is None or flood_value is None:
+                classification = None
+
+            elif slope_value <= max_slope and flood_value <= max_flood:
+                classification = 1
+
+            else:
+                classification = 0
+
+            suitability_row.append(classification)
+
+        suitability_grid.append(suitability_row)
+
+    return suitability_grid
+
+def count_suitable_cells(suitability_grid):
+    count = 0
+    for row in suitability_grid:
+        for cell in row:
+            if cell == 1:
+                count += 1
+
+    return count
+    

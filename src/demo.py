@@ -100,3 +100,37 @@ intersection_sample = [p1, p8]
 intersections = intersecting_parcels(intersection_sample, study_area)
 for parcel in intersections:
     print(parcel.parcel_id)
+
+#Test/Demonstration of Analysis 6. Raster Algorithm
+from analysis import classify_suitability_grid
+
+slope_sample = [
+    [10, 20],
+    [None, 15]
+]
+
+flood_sample = [
+    [0.3, 0.2],
+    [0.1, 0.5]
+]
+
+classified_suitability_grid = classify_suitability_grid(slope_sample, flood_sample, max_slope=15.0, max_flood=0.5)
+print(classified_suitability_grid)
+
+from analysis import count_suitable_cells
+
+suitable_cells = count_suitable_cells(classified_suitability_grid)
+print(suitable_cells)
+
+slope_check = [[10], [10]]
+flood_check = [[0.8, None]]
+
+suitability_check = classify_suitability_grid(
+    slope_check, 
+    flood_check,
+    max_slope=15.0,
+    max_flood=0.5
+)
+print(suitability_check)
+check_count = count_suitable_cells(suitability_check)
+print(check_count)
