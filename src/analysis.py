@@ -101,4 +101,3 @@ def count_suitable_cells(suitability_grid):
                 count += 1
 
     return count
-    
