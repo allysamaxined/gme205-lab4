@@ -2,6 +2,7 @@
 from spatial import Parcel
 from analysis import total_active_area
 from shapely.geometry import Polygon
+import json
 
 polygon = Polygon ([
     (0,0),
@@ -122,7 +123,7 @@ from analysis import count_suitable_cells
 suitable_cells = count_suitable_cells(classified_suitability_grid)
 print(suitable_cells)
 
-slope_check = [[10], [10]]
+slope_check = [[10, 10]]
 flood_check = [[0.8, None]]
 
 suitability_check = classify_suitability_grid(
