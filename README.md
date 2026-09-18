@@ -251,14 +251,14 @@ END FOR
 RETURN suitability_grid and suitable_cell_count
 ```
 #### Results and Outputs
-To view output, open data folder and view:
+To view output, open output folder and view:
 1. lab4_raster_preview.png
 2. lab4_vector_preview.png
 3. lab4_report.json
 
 #### Required Challenges
 ### Challenge 1: Changing the Policy
-In Challenge 1, I used the same function and tasked it to select twice with different minimum areas. This was demonstrated in `run_lab4.py`. Both produced results, for `policy_one_candidate`, there were 45 candidates that were at least 5000 sqm., and 34 with at least 7000 sqm. for the second candidate. 
+In Challenge 1, I used the same function and tasked it to select twice with different minimum areas. This was demonstrated in `run_lab4.py`. Both produced results, for `candidates`, there were 45 candidates that were at least 5000 sqm., and 34 with at least 7000 sqm. for the second candidate. 
 
 This did not change the algorithm, or it did not require me to write it again. I was able to change just the policy while being confident that the same function runs.
 
@@ -312,7 +312,7 @@ The most notable change was that, I knew how to structure it in the actual progr
 
 
 ### 3. Responsibility: Give one behavior that belongs to Parcel/SpatialObject and one rule that belongs to analysis.py. Why? 
-TThe spatial behavior retained in `Parcel/SpatialObject` is `intersects()`, because it operates on an object's geometry. On the other hand, `analysis.py` owns the development eligibility rules, checking whether parcels are active, belong to allowed zones, and meet the minimum area.
+The spatial behavior retained in `Parcel/SpatialObject` is `intersects()`, because it operates on an object's geometry. On the other hand, `analysis.py` owns the development eligibility rules, checking whether parcels are active, belong to allowed zones, and meet the minimum area.
 
 These eligibility rules are changeable project policies, while spatial intersection is reusable geometry behavior. Keeping them separate allows the policy to change without modifying the spatial classes.
 

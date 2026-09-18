@@ -46,6 +46,13 @@ def main():
     from analysis import development_candidates
     candidates = development_candidates(parcels, min_area, allowed_zones)
 
+    # Challenge 1
+    alternative_candidates = development_candidates(
+        parcels, 7000.0, allowed_zones
+    )
+    print("Candidates with minimum area 5000:", len(candidates))
+    print("Candidates with minimum area 7000:", len(alternative_candidates))
+
     # Analysis 5
     from analysis import intersecting_parcels
     intersect_parcel = intersecting_parcels(parcels, study_area)
